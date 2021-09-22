@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+{% if result == False %}
+	No result
+{% else %}
+<h3>User_Roles having Relation_Privileges Owning Tables</h3>
+<table class="table table-striped table-bordered table-hover table-condensed" >
+	<tr>
+		<th>PrivilegeID</th>
+		<th>Privilege_Type</th>
+		<th>Privilege_Description</th>
+		<th>Role_Description</th>
+		<th>RoleName</th>
+		<th>TableName</th>
+		<th>IdNo</th>
+	</tr>
+{% for det in result %}
+	<tr>
+		<td>{{ det[0] }}</td>
+		<td>{{ det[1] }}</td>
+		<td>{{ det[2] }}</td>
+		<td>{{ det[3] }}</td>
+		<td>{{ det[4] }}</td>
+		<td>{{ det[5] }}</td>
+		<td>{{ det[6] }}</td>
+	</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Go back to Home Page</a>
+{% endblock %}

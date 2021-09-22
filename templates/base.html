@@ -1,0 +1,53 @@
+{% extends 'bootstrap/base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="static/style.css">
+{% endblock %}
+
+{% block title %}
+  {% if title %}{{ title }} - {{ appname }}{% else %}{{ appname }}{% endif %}
+{% endblock %}
+
+{% block navbar %}
+    <nav class="navbar navbar-dark" style="float: right;">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+                 <a class="navbar-brand" href="{{ url_for('program1') }}">Program 1</a>
+                 <a class="navbar-brand" href="{{ url_for('program2') }}">Program 2</a>
+                 <a class="navbar-brand" href="{{ url_for('program3') }}">Program 3</a>
+                 <a class="navbar-brand" href="{{ url_for('program4') }}">Program 4</a>
+                 <a class="navbar-brand" href="{{ url_for('program5') }}">Program 5</a>
+                 <a class="navbar-brand" href="{{ url_for('program6') }}">Program 6</a>
+                 <a class="navbar-brand" href="{{ url_for('program7') }}">Program 7</a>
+                 <a class="navbar-brand" href="{{ url_for('program8') }}">Program 8</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    <div id="title_bar" class="jumbotron justify-content-md-center">
+      <div class="container">
+        <h2 id="main_title">{{ appname }}</h1>
+        <h3 id="student_id">1001861756</h2>
+        <h4 id="student_name">Nishank Gujar </h3>
+        <hr>
+        <h3 id="student_id">1001864606</h2>
+        <h4 id="student_name">Amay Kadakia </h3>
+      </div>
+    </div>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+            <div class="alert alert-info" role="alert">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+        {% block app_content %}
+        {% endblock %}
+    </div>
+{% endblock %}

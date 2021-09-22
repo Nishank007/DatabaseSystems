@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+
+<h3>USER_ACCOUNT</h3>
+	<form action="/prog1"  method="post">
+		<label>IdNo:</label>
+		<input type="number" name="IdNo"><br>
+		<label>Name:</label>
+		<input type="text" name="Name"><br>
+		<label>Email:</label>
+		<input type="text" name="Email"><br>
+		<label>RoleName:</label>
+		<input type="text" name="RoleName"><br>
+		<br>
+		<input type="submit" value="INSERT" class="btn-success" name="prog1">
+	</form>
+<hr>
+</br>
+{% if result == False %}
+	No result
+{% else %}
+<table class="table table-striped table-bordered table-hover table-condensed" >
+	<tr>
+		<th>IdNo</th>
+		<th>Name</th>
+		<th>Email</th>
+		<th>RoleName</th>
+	</tr>
+{% for det in result %}
+	<tr>
+		<td>{{ det[0] }}</td>
+		<td>{{ det[1] }}</td>
+		<td>{{ det[2] }}</td>
+		<td>{{ det[3] }}</td>
+	</tr>
+{% endfor %}
+</table>
+{% endif %}
+
+<a href="{{ url_for('index') }}">Go back to Home Page</a>
+{% endblock %}
